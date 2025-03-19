@@ -26,4 +26,59 @@ After doing this, you may fix the identity used for this commit with:
  create mode 100644 Jenkinsfile
  create mode 160000 docker
 [?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# git commit -m "Added docker"[14Padd dockerrm -rf docker/.git [4@git rm --cached docker[C[1Pdocker build -t test .[4Psudo docker imagesnano docker-compose.yml**compose create compose docker[16Pnano Dockerfile**compose create compose docker[8Pnano docker-compose.yml[5Psudo docker imagesdocker build -t test .git rm --cached docker [4Prm -rf docker/.git[C[5Pgit add dockercommit -m "Added docker"[Knano Jenkinsfie[Kle
-[?2004l[?2004h[?1049h[22;0;0t[1;38r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[36;59H(B[0;7m[ Reading... ](B[m[36;57H(B[0;7m[ Read 66 lines ](B[m[H(B[0;7m  GNU nano 6.2                                                Jenkinsfile                                                         [1;129H(B[m[37d(B[0;7m^G(B[m Help[37;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[37;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[37;113H(B[0;7mM-A(B[m Set Mark[38d(B[0;7m^X(B[m Exit[38;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[38;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[38;113H(B[0;7mM-6(B[m Copy[2dpipeline {[3;5Hagent any[4;5Henvironment {[5;9HDOCKER_IMAGE = "jshema334/docker-app:latest"  // Change this to your registry[6;9HCONTAINER_NAME = "docker-running-app"[7;9HREGISTRY_CREDENTIALS = "docker-hub-credentials"  // Jenkins credentials ID[8;5H}[10dstages {[11;9Hstage('Checkout Code') {[12;13Hsteps {[13;17HwithCredentials([usernamePassword(credentialsId: 'jshema334', usernameVariable: 'GIT
+[?2004l[?2004h[?1049h[22;0;0t[1;38r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[36;59H(B[0;7m[ Reading... ](B[m[36;57H(B[0;7m[ Read 66 lines ](B[m[H(B[0;7m  GNU nano 6.2                                                Jenkinsfile                                                         [1;129H(B[m[37d(B[0;7m^G(B[m Help[37;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[37;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[37;113H(B[0;7mM-A(B[m Set Mark[38d(B[0;7m^X(B[m Exit[38;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[38;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[38;113H(B[0;7mM-6(B[m Copy[2dpipeline {[3;5Hagent any[4;5Henvironment {[5;9HDOCKER_IMAGE = "jshema334/docker-app:latest"  // Change this to your registry[6;9HCONTAINER_NAME = "docker-running-app"[7;9HREGISTRY_CREDENTIALS = "docker-hub-credentials"  // Jenkins credentials ID[8;5H}[10dstages {[11;9Hstage('Checkout Code') {[12;13Hsteps {[13;17HwithCredentials([usernamePassword(credentialsId: 'jshema334', usernameVariable: 'GIT_USER', passwordVariable: 'GI(B[0;7m>[14;21H(B[mgit url: "[94mhttps://$GIT_USER:$GIT_TOKEN@github.com/Hema334/docker.git"[39m(B[m, branch: 'main'[15;17H}[16;13H}[17;9H}[19dstage('Build Docker Image') {[20;13Hsteps {[21;17Hsh 'docker build -t $DOCKER_IMAGE .'[22;13H}[23;9H}[25dstage('Login to Docker Registry') {[26;13Hsteps {[27;17HwithCredentials([usernamePassword(credentialsId: 'jshema334', usernameVariable: 'DOCKER_USER', passwordVariable: (B[0;7m>[28;21H(B[msh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'[29;17H}[30;13H}[31;9H}[33dstage('Push to Container Registry') {[34;13Hsteps {[35;17Hsh 'docker push $DOCKER_IMAGE'[2d[?12l[?25h[?25l[?12l[?25h[6d[?25l[?12l[?25h[10d[?25l[?12l[?25h[14d[?25l[?12l[?25h[18d[?25l[36d[K[?12l[?25h[22d[?25l[?12l[?25h[26d[?25l[?12l[?25h[27d[?25l[?12l[?25h[28d[?25l[?12l[?25h[29d[?25l[?12l[?25h[30d[?25l[?12l[?25h[31d[?25l[?12l[?25h[32d[?25l[?12l[?25h[34d[?25l[?12l[?25h[2;36r[36;1H[3S[1;38r[33;13H}[34;9H}[35d[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;9Hstage('Stop & Remove Existing Container') {[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;13Hsteps {[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;17Hscript {[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;21Hsh '''[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;21Hif [ "$(docker ps -aq -f name=$CONTAINER_NAME)" ]; then[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;25Hdocker stop $CONTAINER_NAME || true[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;25Hdocker rm $CONTAINER_NAME || true[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;21Hfi[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;21H'''[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;17H}[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;13H}[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;9H}[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;1H[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;9Hstage('Run Docker Container') {[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;13Hsteps {[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;17Hsh 'docker run -d -p 5001:5000 --name $CONTAINER_NAME $DOCKER_IMAGE'[?25l[?12l[?25h7[2;36r8[36d
+[1;38r[35;13H}[?25l[?12l[?25h7[2;36r8[36d[3S[1;38r[33;9H}[34;5H}[35d[?25l[?12l[?25h7[2;36r8[36d[4S[1;38r[32;5Hpost {[33dsuccess {[34;13Hecho "Build, push, and container execution successful!"[35;9H}[?25l[?12l[?25h7[2;36r8[36d[6S[1;38r[30;9Hfailure {[31;13Hecho "Build or container execution failed."[32;9H}[33;5H}[34d}[35d[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[37d[J[38d[?12l[?25h[38;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# git add .
+[?2004l[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# git commit -m "Jenkinsfile added"
+[?2004l[main 1d16413] Jenkinsfile added
+ Committer: root <root@ubuntu1.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 29 insertions(+)
+ create mode 100644 {
+[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# git congig --global user.name "Hema335[K4"
+[?2004lgit: 'congig' is not a git command. See 'git --help'.
+
+The most similar command is
+	config
+[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# git congig --global user.name "Hema334"[C[C[1P[1@f[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# git config --global user.name "Hema334"[1P "Hema334"[1P "Hema334"[1P "Hema334"[1P "Hema334"e "Hema334"m "Hema334"a "Hema334"i "Hema334"l "Hema334"[C[C[C[C[C[C[C[C[C[1P"[1P"[1P"[1P"[1P"[1P"[1P"j"s"h"e"m"a"3"3"4"@"g"m"a"i"l"."c"o"m"[C
+[?2004l[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# git config --global user.email "jshema334@gmail.com"[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K--edit
+[?2004lhint: Waiting for your editor to close the file... [?2004h[?1049h[22;0;0t[1;38r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[36;59H(B[0;7m[ Reading... ](B[m[36;58H(B[0;7m[ Read 3 lines ](B[m[H(B[0;7m  GNU nano 6.2                                             /root/.gitconfig                                                       [1;129H(B[m[37d(B[0;7m^G(B[m Help[37;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[37;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[37;113H(B[0;7mM-A(B[m Set Mark[38d(B[0;7m^X(B[m Exit[38;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[38;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[38;113H(B[0;7mM-6(B[m Copy[2d(B[0;1m[32m[user][3;8H(B[0m[38;5;208m[1K [39m(B[mname = Hema334[4;8H[38;5;208m[1K [39m(B[memail = jshema334@gmail.com[2d[?12l[?25h[?25l[36d[J[38d[?12l[?25h[38;1H[?1049l[23;0;0t[?1l>[?2004l[K[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# git config --global --edituser.email "jshema334@gmail.com"[13Pname "Hema334"g[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6Pmmit -m "Jenkinsfile added"add .[Kcommit -m "Jenkinsfile added"[C[C[C[C[C[C[C[C[C[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"i"n"i"t"i"a"l" "c"o"m"m"i"t"[C
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   {[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# git commit -m "initial commit"[4Pnfig --global --edituser.email "jshema334@gmail.com"[13Pname "Hema334"g[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6Pmmit -m "Jenkinsfile added"add .[Knano Jenkinsfile
+[?2004l[?2004h[?1049h[22;0;0t[1;38r(
