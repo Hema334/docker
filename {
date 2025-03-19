@@ -1,0 +1,29 @@
+Script started on 2025-03-19 21:17:45+05:30 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="130" LINES="38"]
+[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# [7mgit rm --cached docker [27mgit rm --cached docker 
+[?2004lerror: the following file has staged content different from both the
+file and the HEAD:
+    docker
+(use -f to force removal)
+[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# [7mrm -rf docker/.git [27mrm -rf docker/.git 
+[?2004l[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# [7mgit add docker[27mgit add docker
+[?2004l[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# [7mgit commit -m "Added docker files as part of the main repo"[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit commit -m "Added docker files as part of the main repo"[C[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[C
+[?2004l[main 8464635] Added docker
+ Committer: root <root@ubuntu1.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 67 insertions(+)
+ create mode 100644 Jenkinsfile
+ create mode 160000 docker
+[?2004h]0;root@ubuntu1: ~/docker-python-app/dockerroot@ubuntu1:~/docker-python-app/docker# git commit -m "Added docker"[14Padd dockerrm -rf docker/.git [4@git rm --cached docker[C[1Pdocker build -t test .[4Psudo docker imagesnano docker-compose.yml**compose create compose docker[16Pnano Dockerfile**compose create compose docker[8Pnano docker-compose.yml[5Psudo docker imagesdocker build -t test .git rm --cached docker [4Prm -rf docker/.git[C[5Pgit add dockercommit -m "Added docker"[Knano Jenkinsfie[Kle
+[?2004l[?2004h[?1049h[22;0;0t[1;38r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[36;59H(B[0;7m[ Reading... ](B[m[36;57H(B[0;7m[ Read 66 lines ](B[m[H(B[0;7m  GNU nano 6.2                                                Jenkinsfile                                                         [1;129H(B[m[37d(B[0;7m^G(B[m Help[37;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[37;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[37;113H(B[0;7mM-A(B[m Set Mark[38d(B[0;7m^X(B[m Exit[38;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[38;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[38;113H(B[0;7mM-6(B[m Copy[2dpipeline {[3;5Hagent any[4;5Henvironment {[5;9HDOCKER_IMAGE = "jshema334/docker-app:latest"  // Change this to your registry[6;9HCONTAINER_NAME = "docker-running-app"[7;9HREGISTRY_CREDENTIALS = "docker-hub-credentials"  // Jenkins credentials ID[8;5H}[10dstages {[11;9Hstage('Checkout Code') {[12;13Hsteps {[13;17HwithCredentials([usernamePassword(credentialsId: 'jshema334', usernameVariable: 'GIT
